@@ -1,7 +1,6 @@
 {
   "name": "express-render",
   "module": "index.ts",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "tsx src/index.ts",
