@@ -1,4 +1,5 @@
 import express from "express";
+import apiRoute from "./routes";
 
 const app = express();
 
@@ -11,6 +12,8 @@ app.get("/", (_req, res) => {
 app.get("/health", (_req, res) => {
   res.status(200).send({ message: "OK" });
 });
+
+app.use("/api", apiRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
