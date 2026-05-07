@@ -1,5 +1,5 @@
 import { ZodType } from "zod";
-import { BadRequestError } from "../errors/httpError";
+import { BadRequestError } from "../errors/http-error";
 
 export function validate<T>(schema: ZodType<T>, data: unknown): T {
   const result = schema.safeParse(data);
