@@ -6,6 +6,8 @@ export const createTicketDto = z.object({
   description: z.string({ error: VALIDATION_MESSAGE.description.required }).min(1, { error: VALIDATION_MESSAGE.description.required }),
 });
 
+export const getTicketIdParam = z.uuid({ error: VALIDATION_MESSAGE.id.uuid });
+
 export const updateTicketDto = z.object({
   title: z.string({ error: VALIDATION_MESSAGE.title.string }).min(1, { error: VALIDATION_MESSAGE.title.required }),
   description: z.string({ error: VALIDATION_MESSAGE.description.required }).min(1, { error: VALIDATION_MESSAGE.description.required }),

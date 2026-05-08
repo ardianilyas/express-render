@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { validate } from "../../shared/utils/validate";
-import { createTicketDto, updateTicketDto } from "./ticket.dto";
+import { createTicketDto, getTicketIdParam, updateTicketDto } from "./ticket.dto";
 import { TicketService } from "./ticket.service";
 import { sendSuccess } from "../../shared/utils/response";
 import { HTTP_STATUS_CODE } from "../../shared/constants/http-status-code";
@@ -19,7 +19,8 @@ export class TicketController {
 
   getTicketById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const ticket = await this.ticketService.getTicketById(req.params.id as string);
+      const id = await validate(getTicketIdParam, req.params.id);
+      const ticket = await this.ticketService.getTicketById(id);
       return sendSuccess(res, HTTP_STATUS_CODE.OK, "Ticket fetched", ticket)
     } catch (error) {
       next(error);
